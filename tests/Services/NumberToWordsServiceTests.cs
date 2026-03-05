@@ -1,4 +1,5 @@
 using api.Services.Numeration;
+using api.Services.Validation.NumberToWordsValidation;
 namespace tests.Services;
 
 public class NumberToWordsServiceTests
@@ -7,7 +8,8 @@ public class NumberToWordsServiceTests
 
   public NumberToWordsServiceTests()
   {
-    _service = new NumberToWordsService();
+    var validator = new NumberToWordsValidator();
+    _service = new NumberToWordsService(validator);
   }
 
   [Theory]

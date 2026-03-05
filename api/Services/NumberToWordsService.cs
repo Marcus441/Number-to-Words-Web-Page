@@ -1,18 +1,26 @@
+using api.Services.Validation;
+
 namespace api.Services.Numeration;
 
-public class NumberToWordsService : INumberToWordsService
+public class NumberToWordsService(IInputValidator validator) : INumberToWordsService
 {
-
   private static readonly string[] Units = ["", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE"];
   private static readonly string[] Teens = ["ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN", "NINETEEN"];
   private static readonly string[] Tens = ["", "TEN", "TWENTY", "THIRTY", "FORTY", "FIFTY", "SIXTY", "SEVENTY", "EIGHTY", "NINETY"];
   private static readonly string[] Scales = ["", "THOUSAND", "MILLION", "BILLION", "TRILLION"];
+  private readonly IInputValidator _validator = validator;
 
-  public string ConvertNumberToWords(string amount)
+  public string ConvertNumberToWords(string input)
   {
-    if (string.IsNullOrWhiteSpace(amount)) return "ZERO DOLLARS AND ZERO CENTS";
+    if (!_validator.TryValidate(input, out decimal parsedAmount))
+    {
+      return string.Empty;
+    }
+    string sanitizedInput = input.Trim();
 
-    var parts = amount.Split('.');
+    if (parsedAmount == 0) return "ZERO DOLLARS AND ZERO CENTS";
+
+    var parts = sanitizedInput.Split('.');
     string rawDollars = parts[0];
     string rawCents = parts.Length > 1 ? parts[1].PadRight(2, '0')[0..2] : "00";
 
