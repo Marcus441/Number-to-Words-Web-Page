@@ -12,6 +12,11 @@ public class ConverterController(INumberToWordsService converterService) : Contr
   public IActionResult Convert([FromQuery] string amount)
   {
     var result = converterService.ConvertNumberToWords(amount);
+    if (string.IsNullOrWhiteSpace(result))
+    {
+      return BadRequest(new { error = "Invalid amount provided." });
+    }
+
     return Ok(new ConversionResponse { Words = result });
   }
 }
