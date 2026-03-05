@@ -1,5 +1,5 @@
 using api.Services.Numeration;
-namespace test.api.fake.Numeration;
+namespace tests.Fakes.Numeration;
 
 public class FakeNumberToWordsService : INumberToWordsService
 {

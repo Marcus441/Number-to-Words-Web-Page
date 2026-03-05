@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using api.Controllers;
-using test.api.fake.Numeration;
+using tests.Fakes.Numeration;
 using api.DTO;
 
-using Xunit;
+namespace tests.Controllers;
 
 public class ConverterControllerTests
 {
