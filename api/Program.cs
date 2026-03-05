@@ -1,11 +1,16 @@
 using api.Services.Numeration;
+using api.Services.Validation;
+using api.Services.Validation.NumberToWordsValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IInputValidator, NumberToWordsValidator>();
 builder.Services.AddScoped<INumberToWordsService, NumberToWordsService>();
+
 builder.Services.AddOpenApi();
 builder.Services.AddCors(options =>
 {
