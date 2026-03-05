@@ -1,5 +1,6 @@
 using Xunit;
 using api.Services.Numeration;
+using api.DTO;
 
 namespace tests.Services;
 
@@ -15,7 +16,9 @@ public class NumberToWordsServiceTests
   [Theory]
   [InlineData("1", "ONE DOLLAR AND ZERO CENTS")]
   [InlineData("21", "TWENTY-ONE DOLLARS AND ZERO CENTS")]
+  [InlineData("21.01", "TWENTY-ONE DOLLARS AND ONE CENT")]
   [InlineData("101", "ONE HUNDRED AND ONE DOLLARS AND ZERO CENTS")]
+  [InlineData("123.45", "ONE HUNDRED AND TWENTY-THREE DOLLARS AND FORTY-FIVE CENTS")]
   [InlineData("13221.01", "THIRTEEN THOUSAND TWO HUNDRED AND TWENTY-ONE DOLLARS AND ONE CENT")]
   public void ConvertNumberToWords_ShouldReturnExpectedWords(string input, string expected)
   {
