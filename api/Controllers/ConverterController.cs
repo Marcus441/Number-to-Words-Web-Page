@@ -1,4 +1,5 @@
 using api.Services.Numeration;
+using api.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers;
@@ -11,6 +12,6 @@ public class ConverterController(INumberToWordsService converterService) : Contr
   public IActionResult Convert([FromQuery] string amount)
   {
     var result = converterService.ConvertNumberToWords(amount);
-    return Ok(new { words = result });
+    return Ok(new ConversionResponse { Words = result });
   }
 }
