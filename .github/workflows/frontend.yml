@@ -2,7 +2,7 @@ name: Frontend CI
 
 on:
   push:
-    branches: [ main, feature/** ]
+    branches: [ main, feature/**, chore/** ]
   pull_request:
     branches: [ main ]
 
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./client 
+        working-directory: ./client
 
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +25,9 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
+
+      - name: Check Formatting
+        run: npm run format:check
 
       - name: Build Project
         run: npm run build
