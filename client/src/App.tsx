@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SubmissionForm, ResultDisplay } from './components';
 import { config } from './utils/env';
+import './App.css';
 
 function App() {
     const [amount, setAmount] = useState('');
@@ -38,13 +39,11 @@ function App() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 space-y-6">
-                <header>
-                    <h1 className="text-2xl font-bold text-slate-900">Currency Converter</h1>
-                    <p className="text-slate-500 text-sm">
-                        Convert numeric amounts to formal words.
-                    </p>
+        <div className="app-wrapper">
+            <main className="card">
+                <header className="app-header">
+                    <h1>Currency Converter</h1>
+                    <p>Convert numeric amounts to formal words.</p>
                 </header>
                 <SubmissionForm
                     amount={amount}
@@ -54,7 +53,7 @@ function App() {
                     error={error}
                 />
                 {result && <ResultDisplay result={result} />}
-            </div>
+            </main>
         </div>
     );
 }
