@@ -30,3 +30,6 @@ result-*
 # === OS Specific ===
 .DS_Store
 Thumbs.db
+
+# === .env ===
+.env

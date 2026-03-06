@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SubmissionForm, ResultDisplay } from './components';
+import { config } from './utils/env';
 
 function App() {
     const [amount, setAmount] = useState('');
@@ -15,7 +16,7 @@ function App() {
 
         try {
             // adjust port to match api port
-            const response = await fetch(`http://localhost:5243/api/convert?amount=${amount}`);
+            const response = await fetch(`${config.apiUrl}/api/convert?amount=${amount}`);
 
             if (!response.ok) {
                 const errorData = await response.json();

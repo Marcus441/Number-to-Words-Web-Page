@@ -1,29 +1,28 @@
 using api.Services.Numeration;
 using api.Services.Validation;
 using api.Services.Validation.NumberToWordsValidation;
+using api.Utils.EnvLoader;
 
+EnvLoader.Load(".env");
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IInputValidator, NumberToWordsValidator>();
 builder.Services.AddScoped<INumberToWordsService, NumberToWordsService>();
 
-builder.Services.AddOpenApi();
+string frontendUrl = Environment.GetEnvironmentVariable("CLIENT_URL") ?? "http://localhost:5173";
+
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactClient", policy => policy.WithOrigins("https://localhost:5173").AllowAnyMethod().AllowAnyHeader());
+    options.AddPolicy("AllowReactClient", policy => policy.WithOrigins(frontendUrl)
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
 
 app.UseHttpsRedirection();
 app.UseCors("AllowReactClient");
