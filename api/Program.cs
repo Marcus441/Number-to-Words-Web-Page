@@ -14,7 +14,7 @@ builder.Services.AddScoped<INumberToWordsService, NumberToWordsService>();
 builder.Services.AddOpenApi();
 builder.Services.AddCors(options =>
 {
-  options.AddPolicy("AllowReactClient", policy => policy.WithOrigins("https://localhost:5173").AllowAnyMethod().AllowAnyHeader());
+    options.AddPolicy("AllowReactClient", policy => policy.WithOrigins("https://localhost:5173").AllowAnyMethod().AllowAnyHeader());
 });
 
 var app = builder.Build();
@@ -22,7 +22,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-  app.MapOpenApi();
+    app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();

@@ -8,15 +8,15 @@ namespace api.Controllers;
 [Route("api")]
 public class ConverterController(INumberToWordsService converterService) : ControllerBase
 {
-  [HttpGet("convert")]
-  public IActionResult Convert([FromQuery] string amount)
-  {
-    var result = converterService.ConvertNumberToWords(amount);
-    if (string.IsNullOrWhiteSpace(result))
+    [HttpGet("convert")]
+    public IActionResult Convert([FromQuery] string amount)
     {
-      return BadRequest(new { error = "Invalid amount provided." });
-    }
+        var result = converterService.ConvertNumberToWords(amount);
+        if (string.IsNullOrWhiteSpace(result))
+        {
+            return BadRequest(new { error = "Invalid amount provided." });
+        }
 
-    return Ok(new ConversionResponse { Words = result });
-  }
+        return Ok(new ConversionResponse { Words = result });
+    }
 }
