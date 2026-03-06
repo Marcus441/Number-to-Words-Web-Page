@@ -3,11 +3,11 @@ namespace tests.Fakes.Numeration;
 
 public class FakeNumberToWordsService : INumberToWordsService
 {
-  public string WordsToReturn { get; set; } = "DEFAULT WORD";
+    public string WordsToReturn { get; set; } = "DEFAULT WORD";
 
-  public string ConvertNumberToWords(string amount)
-  {
-    return WordsToReturn;
-  }
+    public string ConvertNumberToWords(string amount)
+    {
+        return WordsToReturn;
+    }
 }
 
