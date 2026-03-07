@@ -84,7 +84,7 @@ dotnet test
 1. Enter `123.45` in the UI.
 2. **Expected Output:**
    `ONE HUNDRED AND TWENTY-THREE DOLLARS AND FORTY-FIVE CENTS`
-3. Refer to `docs/TestPlan.pdf` for a full list of verified edge cases including
+3. Refer to `docs/TEST_PLAN.md` for a full list of verified edge cases including
    zero-dollar amounts, cent-only values, and large denominations.
 
 ## **Documentation**
