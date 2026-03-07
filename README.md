@@ -91,9 +91,9 @@ dotnet test
 
 Detailed project documentation is provided in the `/docs` directory:
 
-- **`Reasons_for_Selection.pdf`**: Analysis of the custom algorithm and
+- **`REASONS.md`**: Analysis of the custom algorithm and
   justification for architectural choices.
-- **`Test_Plan.pdf`**: Outline of the QA strategy, test cases, and manual
+- **`TEST_PLAN.md`**: Outline of the QA strategy, test cases, and manual
   verification steps.
 - **`Initial_Design_Sketches.pdf`**: Scans of hand-written notes documenting the
   initial logic decomposition.
