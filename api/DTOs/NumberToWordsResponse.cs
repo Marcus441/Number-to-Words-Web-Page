@@ -1,4 +1,4 @@
-namespace api.DTO;
+namespace api.DTOs;
 
 public class ConversionResponse
 {

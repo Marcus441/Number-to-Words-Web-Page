@@ -1,4 +1,4 @@
-namespace api.Services.Validation.NumberToWordsValidation;
+namespace api.Services.Validation;
 
 public class NumberToWordsValidator : IInputValidator
 {
@@ -11,7 +11,7 @@ public class NumberToWordsValidator : IInputValidator
         if (amount < 0)
             return false;
 
-        // prevent overflow 
+        // prevent overflow
         if (amount > 999_999_999.99m)
             return false;
 

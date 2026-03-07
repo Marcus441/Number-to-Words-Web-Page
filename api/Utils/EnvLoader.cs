@@ -1,4 +1,4 @@
-namespace api.Utils.EnvLoader;
+namespace api.Utils;
 
 class EnvLoader
 {
@@ -26,3 +26,4 @@ class EnvLoader
         }
     }
 }
+

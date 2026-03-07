@@ -1,6 +1,7 @@
+namespace api.Services.Numeration;
+
 using api.Services.Validation;
 
-namespace api.Services.Numeration;
 
 public class NumberToWordsService(IInputValidator validator) : INumberToWordsService
 {
@@ -81,7 +82,7 @@ public class NumberToWordsService(IInputValidator validator) : INumberToWordsSer
     {
         List<int> triplets = [];
 
-        // build the string by moving left to right from the integer stream 
+        // build the string by moving left to right from the integer stream
         // with a sliding window of 3
         for (int i = rawIntegerString.Length; i > 0; i -= 3)
         {
@@ -122,7 +123,7 @@ public class NumberToWordsService(IInputValidator validator) : INumberToWordsSer
 
     private static string BuildDollarsString(List<string> wordsList, string rawDollars)
     {
-        bool isExactlyOne = rawDollars.TrimStart('0') == "1"; //only trim the string to avoid potentially expensive cast? 
+        bool isExactlyOne = rawDollars.TrimStart('0') == "1"; //only trim the string to avoid potentially expensive cast?
         string dollarWords = wordsList.Count > 0 ? string.Join(" ", wordsList) : "ZERO";
         string dollarLabel = isExactlyOne ? "DOLLAR" : "DOLLARS";
         return $"{dollarWords} {dollarLabel}";
@@ -139,3 +140,5 @@ public class NumberToWordsService(IInputValidator validator) : INumberToWordsSer
 
 
 }
+
+
