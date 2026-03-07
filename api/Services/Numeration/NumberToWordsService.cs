@@ -2,7 +2,9 @@ namespace api.Services.Numeration;
 
 using api.Services.Validation;
 
-
+/// <summary>
+/// Service responsible for converting numerical strings into formal English currency words.
+/// </summary>
 public class NumberToWordsService(IInputValidator validator) : INumberToWordsService
 {
     private static readonly string[] Units = ["", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE"];
@@ -11,6 +13,11 @@ public class NumberToWordsService(IInputValidator validator) : INumberToWordsSer
     private static readonly string[] Scales = ["", "THOUSAND", "MILLION", "BILLION", "TRILLION"];
     private readonly IInputValidator _validator = validator;
 
+    /// <summary>
+    /// Implements the conversion logic for a triplet based sliding window approach.
+    /// </summary>
+    /// <param name="input">The numerical string input</param>
+    /// <returns>Formal English representation of the currency.</returns>
     public string ConvertNumberToWords(string input)
     {
         if (!_validator.TryValidate(input, out decimal parsedAmount))

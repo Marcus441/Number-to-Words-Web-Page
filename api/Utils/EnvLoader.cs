@@ -1,12 +1,27 @@
 namespace api.Utils;
 
+/// <summary>
+/// Class responsible for managing environment variables
+/// </summary>
 class EnvLoader
 {
-
+    /// <summary>
+    /// Reads a local environment file and sets the parsed key-value pairs
+    /// as process-level environment variables.
+    /// </summary>
+    /// <param name="filepath">The absolute or relative path to the .env file.</param>
+    /// <exception cref="FileNotFoundException">Thrown when the specified file does not exist.</exception>
+    /// <remarks>
+    /// This method supports basic .env syntax, including:
+    /// - Ignoring empty lines and comments starting with '#'.
+    /// - Handling inline comments.
+    /// - Stripping optional quotes around values.
+    /// </remarks>
     public static void Load(string filepath)
     {
         if (!File.Exists(filepath))
             throw new FileNotFoundException($"env file at {filepath} not found");
+
         foreach (string line in File.ReadAllLines(filepath))
         {
             if (string.IsNullOrWhiteSpace(line) || line.StartsWith('#'))
